@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis Pedidos - MiCamisa</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body class="bg-light">
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg bg-light shadow-sm">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="index.html">
+      <i class="fa fa-store text-primary me-1"></i>MiCamisa
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="orders.html">Pedidos</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Categorías</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Fútbol</a></li>
+            <li><a class="dropdown-item" href="#">Béisbol</a></li>
+            <li><a class="dropdown-item" href="#">Americano</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="d-flex me-3">
+        <input class="form-control me-2" type="search" placeholder="Search">
+        <button class="btn btn-outline-success" type="button">Buscar</button>
+      </form>
+      <a class="btn btn-outline-primary position-relative me-2" href="shopping-cart.html">
+        <i class="fa fa-shopping-cart"></i>
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">2</span>
+      </a>
+      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+        Login <i class="fa fa-user ms-1"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container mt-4 mt-md-5 mb-5">
+
+  <!-- Encabezado -->
+  <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+    <h2><i class="fa fa-box-open me-2 text-primary"></i>Mis Pedidos</h2>
+    <a href="index.html" class="btn btn-outline-primary btn-sm">
+      <i class="fa fa-arrow-left me-1"></i>Regresar a Home
+    </a>
+  </div>
+
+  <!-- Filtros -->
+  <div class="mb-4 d-flex gap-2 flex-wrap">
+    <button class="btn btn-primary btn-sm">Todos</button>
+    <button class="btn btn-outline-success btn-sm">Entregados</button>
+    <button class="btn btn-outline-warning btn-sm">En camino</button>
+    <button class="btn btn-outline-danger btn-sm">Cancelados</button>
+  </div>
+
+  <!-- ==================== PEDIDO 1 ==================== -->
+  <div class="card mb-3 shadow-sm">
+    <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <div>
+        <span class="fw-bold">Pedido #001</span>
+        <span class="text-muted ms-2 small">15 Feb 2026</span>
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <span class="badge bg-success">Entregado</span>
+        <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="collapse" data-bs-target="#pedido1">
+          Ver detalles <i class="fa fa-chevron-down ms-1"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="collapse" id="pedido1">
+      <div class="card-body">
+
+        <!-- TABLA: pantallas md+ -->
+        <div class="table-responsive d-none d-md-block">
+          <table class="table table-bordered align-middle text-center mb-3">
+            <thead class="table-light">
+              <tr><th>Imagen</th><th>Producto</th><th>Precio</th><th>Cantidad</th><th>Subtotal</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><img src="https://dpjye2wk9gi5z.cloudfront.net/wcsstore/ExtendedSitesCatalogAssetStore/images/catalog/zoom/3022285-0101V3.jpg" alt="Real Madrid" width="60" class="rounded"></td>
+                <td>Real Madrid - Local</td><td>$1,499</td><td>2</td><td>$2,998</td>
+              </tr>
+              <tr>
+                <td><img src="https://www.innovasport.com/medias/jersey-adidas-tigres-uanl-local-2324-is-HS2030-1.jpg?context=bWFzdGVyfGltYWdlc3w5ODQxN3xpbWFnZS9qcGVnfGFXMWhaMlZ6TDJoaU5TOW9Zamt2TVRFNE5EZzNNVGM0TWpneE1qWXVhbkJufGFhYzE3MDViMDEzMzMzMDAyYjRkZDAwMzk3MTVmNzhmYjI4ZTNhMjRhYjU3OTI5MzUzMGViNWJlZGVjNzZhMDA" alt="Tigres" width="60" class="rounded"></td>
+                <td>Tigres UANL - Local</td><td>$1,799</td><td>1</td><td>$1,799</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- CARDS: solo móvil (d-md-none) -->
+        <div class="d-md-none mb-3">
+          <div class="d-flex align-items-center gap-3 border rounded p-2 mb-2 bg-white">
+            <img src="https://dpjye2wk9gi5z.cloudfront.net/wcsstore/ExtendedSitesCatalogAssetStore/images/catalog/zoom/3022285-0101V3.jpg" alt="Real Madrid" width="55" class="rounded">
+            <div class="flex-grow-1">
+              <div class="fw-bold small">Real Madrid - Local</div>
+              <div class="text-muted small">Cant: 2 &nbsp;|&nbsp; $1,499 c/u</div>
+            </div>
+            <div class="fw-bold text-primary small">$2,998</div>
+          </div>
+          <div class="d-flex align-items-center gap-3 border rounded p-2 mb-2 bg-white">
+            <img src="https://www.innovasport.com/medias/jersey-adidas-tigres-uanl-local-2324-is-HS2030-1.jpg?context=bWFzdGVyfGltYWdlc3w5ODQxN3xpbWFnZS9qcGVnfGFXMWhaMlZ6TDJoaU5TOW9Zamt2TVRFNE5EZzNNVGM0TWpneE1qWXVhbkJufGFhYzE3MDViMDEzMzMzMDAyYjRkZDAwMzk3MTVmNzhmYjI4ZTNhMjRhYjU3OTI5MzUzMGViNWJlZGVjNzZhMDA" alt="Tigres" width="55" class="rounded">
+            <div class="flex-grow-1">
+              <div class="fw-bold small">Tigres UANL - Local</div>
+              <div class="text-muted small">Cant: 1 &nbsp;|&nbsp; $1,799 c/u</div>
+            </div>
+            <div class="fw-bold text-primary small">$1,799</div>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+          <div><i class="fa fa-truck text-success me-1"></i><small class="text-success">Entregado el 20 Feb 2026</small></div>
+          <h6 class="mb-0">Total: <span class="text-primary fw-bold">$4,797</span></h6>
+        </div>
+        <div class="mt-3 d-flex gap-2 flex-wrap">
+          <button class="btn btn-outline-primary btn-sm"><i class="fa fa-redo me-1"></i>Volver a comprar</button>
+          <button class="btn btn-outline-secondary btn-sm"><i class="fa fa-file-invoice me-1"></i>Ver factura</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PEDIDO 2 ==================== -->
+  <div class="card mb-3 shadow-sm">
+    <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <div>
+        <span class="fw-bold">Pedido #002</span>
+        <span class="text-muted ms-2 small">20 Feb 2026</span>
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <span class="badge bg-warning text-dark">En camino</span>
+        <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="collapse" data-bs-target="#pedido2">
+          Ver detalles <i class="fa fa-chevron-down ms-1"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="collapse" id="pedido2">
+      <div class="card-body">
+
+        <!-- TABLA: pantallas md+ -->
+        <div class="table-responsive d-none d-md-block">
+          <table class="table table-bordered align-middle text-center mb-3">
+            <thead class="table-light">
+              <tr><th>Imagen</th><th>Producto</th><th>Precio</th><th>Cantidad</th><th>Subtotal</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><img src="https://images.footballfanatics.com/los-angeles-dodgers/los-angeles-dodgers-nike-official-replica-road-jersey-mens-with-buehler-21-printing_ss4_p-12068133+pv-1+u-5ae51xii01okwr13exl+v-c4352b3c4720480ca1014f450b95216c.jpg?_hv=2&w=1018" alt="Dodgers" width="60" class="rounded"></td>
+                <td>Dodgers</td><td>$2,199</td><td>1</td><td>$2,199</td>
+              </tr>
+              <tr>
+                <td><img src="https://images.footballfanatics.com/pittsburgh-steelers/mens-nike-roman-wilson-black-pittsburgh-steelers-game-player-jersey_ss5_p-201359787+pv-2+u-sdxcnjqomwgpirh7pxvo+v-btutvodjp4msifjc79pf.jpg?_hv=2&w=1018" alt="Steelers" width="60" class="rounded"></td>
+                <td>Steelers</td><td>$2,499</td><td>2</td><td>$4,998</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- CARDS: solo móvil -->
+        <div class="d-md-none mb-3">
+          <div class="d-flex align-items-center gap-3 border rounded p-2 mb-2 bg-white">
+            <img src="https://images.footballfanatics.com/los-angeles-dodgers/los-angeles-dodgers-nike-official-replica-road-jersey-mens-with-buehler-21-printing_ss4_p-12068133+pv-1+u-5ae51xii01okwr13exl+v-c4352b3c4720480ca1014f450b95216c.jpg?_hv=2&w=1018" alt="Dodgers" width="55" class="rounded">
+            <div class="flex-grow-1">
+              <div class="fw-bold small">Dodgers</div>
+              <div class="text-muted small">Cant: 1 &nbsp;|&nbsp; $2,199 c/u</div>
+            </div>
+            <div class="fw-bold text-primary small">$2,199</div>
+          </div>
+          <div class="d-flex align-items-center gap-3 border rounded p-2 mb-2 bg-white">
+            <img src="https://images.footballfanatics.com/pittsburgh-steelers/mens-nike-roman-wilson-black-pittsburgh-steelers-game-player-jersey_ss5_p-201359787+pv-2+u-sdxcnjqomwgpirh7pxvo+v-btutvodjp4msifjc79pf.jpg?_hv=2&w=1018" alt="Steelers" width="55" class="rounded">
+            <div class="flex-grow-1">
+              <div class="fw-bold small">Steelers</div>
+              <div class="text-muted small">Cant: 2 &nbsp;|&nbsp; $2,499 c/u</div>
+            </div>
+            <div class="fw-bold text-primary small">$4,998</div>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+          <div><i class="fa fa-truck text-warning me-1"></i><small class="text-warning">Llegará aprox. el 28 Feb 2026</small></div>
+          <h6 class="mb-0">Total: <span class="text-primary fw-bold">$7,197</span></h6>
+        </div>
+        <div class="mt-3">
+          <p class="small text-muted mb-1">Progreso del envío:</p>
+          <div class="progress" style="height: 8px;">
+            <div class="progress-bar bg-warning" style="width: 65%"></div>
+          </div>
+          <div class="d-flex justify-content-between small text-muted mt-1">
+            <span>Procesado</span><span>En tránsito</span><span>Entregado</span>
+          </div>
+        </div>
+        <div class="mt-3 d-flex gap-2 flex-wrap">
+          <button class="btn btn-outline-primary btn-sm"><i class="fa fa-map-marker-alt me-1"></i>Rastrear pedido</button>
+          <button class="btn btn-outline-danger btn-sm"><i class="fa fa-times me-1"></i>Cancelar pedido</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PEDIDO 3 ==================== -->
+  <div class="card mb-3 shadow-sm">
+    <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <div>
+        <span class="fw-bold">Pedido #003</span>
+        <span class="text-muted ms-2 small">25 Feb 2026</span>
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <span class="badge bg-danger">Cancelado</span>
+        <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="collapse" data-bs-target="#pedido3">
+          Ver detalles <i class="fa fa-chevron-down ms-1"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="collapse" id="pedido3">
+      <div class="card-body">
+
+        <!-- TABLA: pantallas md+ -->
+        <div class="table-responsive d-none d-md-block">
+          <table class="table table-bordered align-middle text-center mb-3">
+            <thead class="table-light">
+              <tr><th>Imagen</th><th>Producto</th><th>Precio</th><th>Cantidad</th><th>Subtotal</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><img src="https://www.innovasport.com/medias/jersey-adidas-tigres-uanl-local-2324-is-HS2030-1.jpg?context=bWFzdGVyfGltYWdlc3w5ODQxN3xpbWFnZS9qcGVnfGFXMWhaMlZ6TDJoaU5TOW9Zamt2TVRFNE5EZzNNVGM0TWpneE1qWXVhbkJufGFhYzE3MDViMDEzMzMzMDAyYjRkZDAwMzk3MTVmNzhmYjI4ZTNhMjRhYjU3OTI5MzUzMGViNWJlZGVjNzZhMDA" alt="Tigres" width="60" class="rounded"></td>
+                <td>Tigres UANL - Local</td><td>$1,799</td><td>1</td><td>$1,799</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- CARDS: solo móvil -->
+        <div class="d-md-none mb-3">
+          <div class="d-flex align-items-center gap-3 border rounded p-2 mb-2 bg-white">
+            <img src="https://www.innovasport.com/medias/jersey-adidas-tigres-uanl-local-2324-is-HS2030-1.jpg?context=bWFzdGVyfGltYWdlc3w5ODQxN3xpbWFnZS9qcGVnfGFXMWhaMlZ6TDJoaU5TOW9Zamt2TVRFNE5EZzNNVGM0TWpneE1qWXVhbkJufGFhYzE3MDViMDEzMzMzMDAyYjRkZDAwMzk3MTVmNzhmYjI4ZTNhMjRhYjU3OTI5MzUzMGViNWJlZGVjNzZhMDA" alt="Tigres" width="55" class="rounded">
+            <div class="flex-grow-1">
+              <div class="fw-bold small">Tigres UANL - Local</div>
+              <div class="text-muted small">Cant: 1 &nbsp;|&nbsp; $1,799 c/u</div>
+            </div>
+            <div class="fw-bold text-muted small text-decoration-line-through">$1,799</div>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+          <div><i class="fa fa-times-circle text-danger me-1"></i><small class="text-danger">Cancelado el 26 Feb 2026</small></div>
+          <h6 class="mb-0">Total: <span class="text-muted fw-bold text-decoration-line-through">$1,799</span></h6>
+        </div>
+        <div class="mt-3 d-flex gap-2 flex-wrap">
+          <button class="btn btn-outline-primary btn-sm"><i class="fa fa-redo me-1"></i>Volver a comprar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botón regreso -->
+  <div class="text-center mt-5">
+    <a href="index.html" class="btn btn-primary btn-lg">
+      <i class="fa fa-home me-2"></i>Regresar a Home
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="container-fluid bg-primary text-white text-center py-2">
+    MiCamisa - ¡Compra yaa! 🛒
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MiCamisa - Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <style>
+    .card-img-top { height: 200px; object-fit: cover; }
+    .navbar-brand { font-weight: 700; }
+    .toast-container { z-index: 1100; }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg bg-light shadow-sm sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <i class="fa fa-store text-primary me-1"></i>MiCamisa
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="orders.html">Pedidos</a></li>
+        <li class="nav-item"><a class="nav-link" href="admin.html"><i class="fa fa-lock me-1"></i>Admin</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Categorías</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Fútbol</a></li>
+            <li><a class="dropdown-item" href="#">Béisbol</a></li>
+            <li><a class="dropdown-item" href="#">Americano</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <!-- Buscador funcional -->
+      <form class="d-flex me-3" onsubmit="return false;">
+        <input id="searchInput" class="form-control me-2" type="search" placeholder="Buscar productos...">
+        <button class="btn btn-outline-success" type="button">Buscar</button>
+      </form>
+
+      <!-- Carrito -->
+      <a class="btn btn-outline-primary position-relative me-2" href="shopping-cart.html">
+        <i class="fa fa-shopping-cart"></i>
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-badge">0</span>
+      </a>
+
+      <!-- Login -->
+      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+        Login <i class="fa fa-user ms-1"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+<!-- CARRUSEL -->
+<div class="container mt-4">
+  <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#carousel" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#carousel" data-bs-slide-to="2"></button>
+    </div>
+    <div class="carousel-inner rounded shadow">
+      <div class="carousel-item active">
+<!-- Slide 1: tienda de jerseys -->
+<img src="https://images.unsplash.com/photo-1555274175-6cbf6f3b137b?w=1400&q=80"
+  class="d-block w-100" style="max-height:320px; object-fit:cover;" alt="Tienda de jerseys">
+      </div>
+      <div class="carousel-item">
+<!-- Slide 2: estadio con ambiente -->
+<img src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1400&q=80"
+  class="d-block w-100" style="max-height:320px; object-fit:cover;" alt="Estadio deportivo">
+      </div>
+      <div class="carousel-item">
+<!-- Slide 3: jerseys colgados en tienda -->
+<img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=1400&q=80"
+  class="d-block w-100" style="max-height:320px; object-fit:cover;" alt="Ropa deportiva">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+</div>
+
+
+<!-- PRODUCTOS -->
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="mb-0">Productos</h2>
+    <small class="text-muted">Conectado a <code>localhost:3100</code></small>
+  </div>
+
+  <!-- Grid de productos (llenado por home.js) -->
+  <div class="row g-4" id="productList">
+    <!-- Spinner inicial -->
+    <div class="col-12 text-center py-5">
+      <div class="spinner-border text-primary" role="status"></div>
+      <p class="mt-2 text-muted">Cargando productos...</p>
+    </div>
+  </div>
+
+  <!-- PAGINACIÓN (llenada por home.js) -->
+  <nav class="mt-5 d-flex justify-content-center" aria-label="Paginación">
+    <ul class="pagination" id="pagination"></ul>
+  </nav>
+</div>
+
+
+<!-- ── MODAL: Agregar al carrito ─────────────────────────────────────────── -->
+<div class="modal fade" id="addToCartModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fa fa-cart-plus me-2 text-primary"></i>Agregar al carrito</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex gap-3 align-items-start mb-3">
+          <img id="modalProductImg" src="" alt="" class="rounded shadow-sm"
+            style="width:100px; height:100px; object-fit:cover;">
+          <div>
+            <h5 id="modalProductTitle" class="mb-1"></h5>
+            <p id="modalProductDesc" class="text-muted small mb-1"></p>
+            <p id="modalProductPrice" class="fw-bold text-primary mb-0"></p>
+          </div>
+        </div>
+        <label class="form-label fw-bold">Cantidad:</label>
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-outline-secondary"
+            onclick="document.getElementById('modalQty').value = Math.max(1, parseInt(document.getElementById('modalQty').value)-1)">
+            <i class="fa fa-minus"></i>
+          </button>
+          <input type="number" id="modalQty" class="form-control text-center" value="1" min="1" style="width:80px;">
+          <button class="btn btn-outline-secondary"
+            onclick="document.getElementById('modalQty').value = parseInt(document.getElementById('modalQty').value)+1">
+            <i class="fa fa-plus"></i>
+          </button>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" onclick="confirmAddToCart()">
+          <i class="fa fa-cart-plus me-1"></i>Agregar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ── MODAL: Login ──────────────────────────────────────────────────────── -->
+<div class="modal fade" id="loginModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Inicio de sesión</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form class="needs-validation" novalidate>
+          <div class="mb-3">
+            <div class="input-group">
+              <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+              <input type="email" class="form-control" placeholder="Correo electrónico" required>
+              <div class="invalid-feedback">Este campo es obligatorio.</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="input-group">
+              <span class="input-group-text"><i class="fa fa-lock"></i></span>
+              <input type="password" class="form-control" placeholder="Contraseña" required>
+              <div class="invalid-feedback">Este campo es obligatorio.</div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-end gap-2">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary">Ingresar</button>
+          </div>
+        </form>
+        <div class="d-flex justify-content-end mt-3">
+          <small>¿Aún no tienes cuenta?&nbsp;
+            <a href="#" data-bs-toggle="modal" data-bs-target="#registerModal" data-bs-dismiss="modal">Regístrate</a>
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ── MODAL: Registro ───────────────────────────────────────────────────── -->
+<div class="modal fade" id="registerModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Crea una cuenta</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form class="needs-validation" novalidate>
+          <div class="row mb-3">
+            <div class="col-6">
+              <input type="text" class="form-control" placeholder="Nombre"
+                pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" required>
+              <div class="invalid-feedback">Nombre requerido, sin números.</div>
+            </div>
+            <div class="col-6">
+              <input type="text" class="form-control" placeholder="Apellido"
+                pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+" required>
+              <div class="invalid-feedback">Apellido requerido, sin números.</div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <input type="email" class="form-control" placeholder="Correo electrónico" required>
+            <div class="invalid-feedback">Correo válido requerido.</div>
+          </div>
+          <div class="mb-3">
+            <input type="password" class="form-control" placeholder="Contraseña"
+              pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}" required>
+            <div class="invalid-feedback">Mínimo 6 caracteres, mayúsculas, minúsculas y números.</div>
+          </div>
+          <div class="mb-3">
+            <input type="password" class="form-control" placeholder="Confirma tu contraseña" required>
+            <div class="invalid-feedback">Confirma tu contraseña.</div>
+          </div>
+          <div class="d-flex justify-content-end gap-2">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-success">Registrarme</button>
+          </div>
+        </form>
+        <div class="text-center mt-3">
+          <small>¿Ya tienes cuenta?
+            <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Inicia sesión</a>
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ── TOAST: Confirmación de carrito ───────────────────────────────────── -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="cartToast" class="toast align-items-center text-bg-success border-0" role="alert">
+    <div class="d-flex">
+      <div class="toast-body fw-bold" id="cartToastMsg"></div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+</div>
+
+
+<footer class="mt-5">
+  <div class="container-fluid bg-primary text-white text-center py-2">
+    MiCamisa - ¡Compra yaa! 🛒
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Módulos JS -->
+<script src="js/api.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/home.js"></script>
+
+<!-- Validación Bootstrap forms -->
+<script>
+(() => {
+  "use strict";
+  const forms = document.querySelectorAll(".needs-validation");
+  Array.from(forms).forEach((form) => {
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      if (form.checkValidity()) {
+        const modalEl = form.closest(".modal");
+        if (modalEl) bootstrap.Modal.getInstance(modalEl)?.hide();
+        form.classList.remove("was-validated");
+        form.reset();
+      } else {
+        form.classList.add("was-validated");
+      }
+    }, false);
+  });
+})();
+</script>
+
+</body>
+</html>
