@@ -1,7 +1,3 @@
-// js/admin.js
-// CRUD completo de productos para la sección de administrador (admin.html).
-// Usa las funciones de api.js para comunicarse con el backend.
-
 let editingId = null; // id del producto que se está editando (null = crear)
 
 document.addEventListener('DOMContentLoaded', async () => {

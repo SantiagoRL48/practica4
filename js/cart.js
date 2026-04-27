@@ -1,7 +1,5 @@
 // js/cart.js
 // Módulo de gestión del carrito de compras.
-// Persiste en sessionStorage bajo la clave 'cart'.
-// Estructura de cada item: { id, title, description, imageUrl, pricePerUnit, unit, quantity }
 
 const CART_KEY = 'cart';
 
