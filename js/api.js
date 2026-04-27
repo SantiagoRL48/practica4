@@ -1,8 +1,4 @@
-// js/api.js
-// Módulo de comunicación con el backend (Práctica 3 - localhost:3100)
-// Todas las peticiones van aquí; el resto del código solo llama estas funciones.
-
-const API_URL = 'http://localhost:3100/api';
+const API_URL = 'https://practica3-production-9330.up.railway.app/api';
 
 // ── Productos ─────────────────────────────────────────────────────────────────
 
@@ -46,7 +42,7 @@ async function createProduct(productData) {
 }
 
 /**
- * Actualiza un producto existente (requiere rol admin).
+ * Actualiza un producto existente 
  */
 async function updateProduct(id, productData) {
   const res = await fetch(`${API_URL}/products/${id}`, {
@@ -60,7 +56,7 @@ async function updateProduct(id, productData) {
 }
 
 /**
- * Elimina un producto (requiere rol admin).
+ * Elimina un producto 
  */
 async function deleteProduct(id) {
   const res = await fetch(`${API_URL}/products/${id}`, {
